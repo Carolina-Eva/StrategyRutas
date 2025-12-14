@@ -37,7 +37,7 @@
             // dgvRutas
             // 
             dgvRutas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRutas.Location = new Point(12, 62);
+            dgvRutas.Location = new Point(12, 57);
             dgvRutas.Name = "dgvRutas";
             dgvRutas.Size = new Size(660, 245);
             dgvRutas.TabIndex = 0;
