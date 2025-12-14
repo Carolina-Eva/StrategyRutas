@@ -36,6 +36,8 @@
             label2 = new Label();
             lblMetricas = new Label();
             pnlLeyenda = new Panel();
+            pnlMapa = new Panel();
+            btnVerHistorial = new Button();
             SuspendLayout();
             // 
             // cboEstrategia
@@ -48,9 +50,9 @@
             // 
             // btnCalcular
             // 
-            btnCalcular.Location = new Point(475, 166);
+            btnCalcular.Location = new Point(634, 97);
             btnCalcular.Name = "btnCalcular";
-            btnCalcular.Size = new Size(75, 23);
+            btnCalcular.Size = new Size(121, 35);
             btnCalcular.TabIndex = 1;
             btnCalcular.Text = "Calcular";
             btnCalcular.UseVisualStyleBackColor = true;
@@ -93,24 +95,43 @@
             // lblMetricas
             // 
             lblMetricas.AutoSize = true;
-            lblMetricas.Location = new Point(475, 218);
+            lblMetricas.Location = new Point(475, 149);
             lblMetricas.Name = "lblMetricas";
-            lblMetricas.Size = new Size(38, 15);
+            lblMetricas.Size = new Size(52, 15);
             lblMetricas.TabIndex = 6;
-            lblMetricas.Text = "label3";
+            lblMetricas.Text = "Metricas";
             // 
             // pnlLeyenda
             // 
-            pnlLeyenda.Location = new Point(475, 296);
+            pnlLeyenda.Location = new Point(475, 200);
             pnlLeyenda.Name = "pnlLeyenda";
             pnlLeyenda.Size = new Size(180, 120);
             pnlLeyenda.TabIndex = 7;
+            // 
+            // pnlMapa
+            // 
+            pnlMapa.Location = new Point(22, 25);
+            pnlMapa.Name = "pnlMapa";
+            pnlMapa.Size = new Size(405, 405);
+            pnlMapa.TabIndex = 8;
+            // 
+            // btnVerHistorial
+            // 
+            btnVerHistorial.Location = new Point(475, 395);
+            btnVerHistorial.Name = "btnVerHistorial";
+            btnVerHistorial.Size = new Size(105, 35);
+            btnVerHistorial.TabIndex = 9;
+            btnVerHistorial.Text = "VerHistorial";
+            btnVerHistorial.UseVisualStyleBackColor = true;
+            btnVerHistorial.Click += btnVerHistorial_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnVerHistorial);
+            Controls.Add(pnlMapa);
             Controls.Add(pnlLeyenda);
             Controls.Add(lblMetricas);
             Controls.Add(label2);
@@ -136,5 +157,7 @@
         private Label label2;
         private Label lblMetricas;
         private Panel pnlLeyenda;
+        private Panel pnlMapa;
+        private Button btnVerHistorial;
     }
 }

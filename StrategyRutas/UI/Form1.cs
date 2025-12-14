@@ -13,16 +13,9 @@ namespace UI
         private Nodo _origen;
         private Nodo _destino;
 
-        Panel pnlMapa;
-
         public Form1()
         {
             InitializeComponent();
-            pnlMapa = new Panel
-            {
-                Width = 400,
-                Height = 400
-            };
             pnlMapa.Paint += pnlMapa_Paint;
             Controls.Add(pnlMapa);
         }
@@ -52,7 +45,6 @@ namespace UI
             AgregarItemLeyenda(pnlLeyenda, Color.Green, "Origen", 100);
             AgregarItemLeyenda(pnlLeyenda, Color.Red, "Destino", 130);
         }
-
 
         private void CargarEstrategias()
         {
@@ -92,7 +84,6 @@ namespace UI
 
             return mapa;
         }
-
 
         private IRutaStrategy ObtenerEstrategiaSeleccionada()
         {
@@ -138,15 +129,7 @@ namespace UI
                 Fecha = DateTime.Now
             };
             bool exito = await _manager.GuardarRutaAsync(rutaCalculada);
-            if (exito)
-            {
-                return true;
-                MessageBox.Show("Ruta guardada exitosamente.");
-            }
-            else { 
-                return false;
-                MessageBox.Show("Error al guardar la ruta.");
-            }
+            return exito;
         }
 
         private async void MostrarRuta(Ruta ruta)
@@ -185,7 +168,6 @@ namespace UI
             }
         }
 
-
         private void DibujarZonas(Graphics g)
         {
             foreach (var nodo in _mapa.Nodos)
@@ -210,7 +192,6 @@ namespace UI
                 }
             }
         }
-
 
         private void DibujarOrigenDestino(Graphics g)
         {
@@ -255,7 +236,6 @@ namespace UI
                     nodo.Y * TAM_CELDA + 2);
             }
         }
-
 
         private void DibujarRuta(Graphics g)
         {
@@ -325,7 +305,7 @@ namespace UI
         Color color,
         string texto,
         int top)
-         {
+        {
             Panel colorBox = new Panel
             {
                 BackColor = color,
@@ -345,6 +325,12 @@ namespace UI
             parent.Controls.Add(lbl);
         }
 
-
+        private void btnVerHistorial_Click(object sender, EventArgs e)
+        {
+            using (var frm = new Info())
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }
