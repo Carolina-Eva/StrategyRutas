@@ -48,9 +48,12 @@ namespace UI
 
         private void CargarEstrategias()
         {
-            cboEstrategia.Items.Add("Más corta");
-            cboEstrategia.Items.Add("Más rápida");
-            cboEstrategia.Items.Add("Más segura");
+            cboEstrategia.DisplayMember = "Nombre";
+
+            cboEstrategia.Items.Add(new RutaMasCortaStrategy());
+            cboEstrategia.Items.Add(new RutaMasRapidaStrategy());
+            cboEstrategia.Items.Add(new RutaMasSeguraStrategy());
+
             cboEstrategia.SelectedIndex = 0;
         }
 
@@ -85,23 +88,15 @@ namespace UI
             return mapa;
         }
 
-        private IRutaStrategy ObtenerEstrategiaSeleccionada()
-        {
-            return cboEstrategia.SelectedItem.ToString() switch
-            {
-                "Más corta" => new RutaMasCortaStrategy(),
-                "Más rápida" => new RutaMasRapidaStrategy(),
-                "Más segura" => new RutaMasSeguraStrategy(),
-                _ => new RutaMasCortaStrategy()
-            };
-        }
-
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             _origen = (Nodo)cboOrigen.SelectedItem;
             _destino = (Nodo)cboDestino.SelectedItem;
 
-            _navegador.CambiarEstrategia(ObtenerEstrategiaSeleccionada());
+            IRutaStrategy estrategiaSeleccionada =
+                (IRutaStrategy)cboEstrategia.SelectedItem;
+
+            _navegador.CambiarEstrategia(estrategiaSeleccionada);
 
             var ruta = _navegador.CalcularRuta(_mapa, _origen, _destino);
 
